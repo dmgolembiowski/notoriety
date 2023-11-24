@@ -15,4 +15,12 @@ name = "no"
 path = "src/bin/notoriety-cli.rs"
 
 [dependencies]
-clap = { version = "4.4.8", features = ["derive"] }
+anyhow = "1"
+bonsaidb = { version = "0.5.0", features = ["local-full", "files", "password-hashing", "token-authentication", "encryption"] }
+clap = { version = "4", features = ["derive"] }
+ctor = "0.2.5"
+kiro-editor = "0.4.3"
+
+[dev-dependencies]
+rstest = "0.18"
+
