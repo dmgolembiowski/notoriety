@@ -29,9 +29,9 @@ pub struct NoteRefMut<'a>(&'a mut Note);
 //
 // Note the lifetime bound 'a implies the reference to the cipher key
 // has to live as long as the Note<'a> it is indirectly bound to.
-pub fn create_note<'a, const N: usize>(
+pub fn create_note<'a, T: AsRef<[u8]> + Sized>(
     name: &str, 
-    cipher: Option<&'a [u8; N]>
+    cipher: Option<T>
 ) -> Result<NoteRef<'a>> {
     todo!("Create a note titled `name` in an existing db");
 }
@@ -57,7 +57,7 @@ mod tests {
     #[test]
     fn crud_create() {
         let cipher: Option<&[u8]> = None;
-        let note: Result<NoteRef> = create_note::<0_usize>("test", None);
+        let note: Result<NoteRef> = create_note::<&[u8]>("test", None);
         match note {
             Ok(_) => (),
             Err(e) => panic!("{:?}", &e),
@@ -66,7 +66,7 @@ mod tests {
 
     #[test]
     fn crud_create_unnamed() {
-        let note: Result<NoteRef> = create_note::<0_usize>("", None);
+        let note: Result<NoteRef> = create_note::<&[u8]>("", None);
         match note {
             Ok(note_ref) => (),
             Err(e) => panic!("{:?}", &e),
@@ -76,8 +76,8 @@ mod tests {
 
     #[test]
     fn crud_create_named_encrypted() {
-        let cipher = Some(b"intentionally bad password");
-        let note: Result<NoteRef> = create_note::<26_usize>("encrypted-test", cipher);
+        let cipher: Option<&[u8]> = Some(b"intentionally bad password");
+        let note: Result<NoteRef> = create_note::<&[u8]>("encrypted-test", cipher);
         match note {
             Ok(note_ref) => (),
             Err(e) => panic!("{:?}", &e),
