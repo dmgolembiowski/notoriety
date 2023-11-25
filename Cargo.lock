@@ -1724,13 +1724,14 @@ dependencies = [
 
 [[package]]
 name = "notoriety-cli"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "bonsaidb",
  "clap",
  "ctor",
  "kiro-editor",
+ "lazy_static",
  "rstest",
 ]
 

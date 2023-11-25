@@ -1,6 +1,6 @@
 [package]
 name = "notoriety-cli"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 license = "MIT"
 description = "Encrypted note-taking application with cloud sharing"
@@ -20,6 +20,7 @@ bonsaidb = { version = "0.5.0", features = ["local-full", "files", "password-has
 clap = { version = "4", features = ["derive"] }
 ctor = "0.2.5"
 kiro-editor = "0.4.3"
+lazy_static = "1.4.0"
 
 [dev-dependencies]
 rstest = "0.18"
