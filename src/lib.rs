@@ -7,6 +7,7 @@ use {
 pub(crate) mod note_api;
 pub use note_api::*;
 
+pub(crate) mod editor;
 pub(crate) mod backend;
 
 #[cfg(test)]

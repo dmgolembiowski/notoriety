@@ -25,6 +25,7 @@ ctor = "0.2.5"
 homedir = "0.2.1"
 kiro-editor = "0.4.3"
 lazy_static = "1.4.0"
+termsize = "0.1.6"
 
 [dev-dependencies]
 rstest = "0.18"

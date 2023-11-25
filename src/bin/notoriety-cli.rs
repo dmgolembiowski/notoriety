@@ -14,5 +14,8 @@ use {
 };
 
 fn main() -> Result<(), ()> {
+    use std::env::args;
+    let argv: Vec<String> = args().skip(1_usize).collect();
+    println!("{:?}", &argv);
     Ok(())
 }

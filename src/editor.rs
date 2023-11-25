@@ -13,8 +13,8 @@ pub fn spawn_editor(files: Vec<String>) -> kiro::Result<()> {
     let output = io::stdout();
     let window_size: Option<(usize, usize)> = {
         use termsize;
-        let termsize::Size { rows, cols } = termsize::get();
-        Some((rows, cols))
+        let termsize::Size { rows, cols } = termsize::get().unwrap();
+        Some((rows as usize, cols as usize))
     };
     
     Editor::open(
